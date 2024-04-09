@@ -19,11 +19,6 @@ app.get("/", (req, res) => {
   res.send("Hello, Welcome to the Backend Code for Inventory Management App");
 });
 
-const PORT = process.env.Port || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
 app.post("/items", async (req, res) => {
   const { name, quantity, price, category } = req.body;
   if (!name || !quantity || !price || !category) {
@@ -93,4 +88,9 @@ app.get("/sales", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error getting sales", error: error });
   }
+});
+
+const PORT = process.env.Port || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
